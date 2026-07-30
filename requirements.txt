@@ -1,0 +1,11 @@
+pyRDDLGym==2.7
+rddlrepository==2.2
+stable-baselines3[extra]==2.8.0
+gymnasium==1.2.3
+torch
+numpy
+matplotlib
+pandas
+PyYAML>=6.0
+tqdm
+rich

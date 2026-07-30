@@ -1,0 +1,30 @@
+# configs/domains/CrossingTraffic_MDP_ippc2011.yaml
+
+# Hyperparamètres PPO pour CrossingTraffic
+algo_kwargs:
+  learning_rate: 3.0e-4
+  n_steps: 512
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  ent_coef: 0.01
+  clip_range: 0.2
+
+total_timesteps: 1000000
+eval_episodes: 300
+
+# Early stopping
+early_stop_window: 200
+early_stop_patience: 50
+early_stop_min_delta: 0.01
+early_stop_check_freq: 200
+early_stop_min_timesteps: 100000
+
+# Paramètres CP (utilisés uniquement si algo=ppo-cp)
+cp:
+  cp_model: costregular
+  port: 12346
+  bp_iter: 3
+  alpha: 1.0 # à tuner : 1.0–10.0 selon l'instance
+  java_project_dir: "MiniCPBP"

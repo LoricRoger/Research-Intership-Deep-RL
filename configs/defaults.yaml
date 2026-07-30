@@ -1,0 +1,46 @@
+eval_episodes: 30  # IPPC evaluation protocol: 30 trials per instance
+
+# Early stopping: stop when rolling mean reward plateaus.
+# Can be overridden per domain in configs/domains/<domain>.yaml.
+early_stop_enabled: false     # set to true to re-enable convergence-based stopping
+early_stop_window: 200        # episodes in the rolling mean (~8k steps at horizon=40)
+early_stop_patience: 100      # consecutive checks without improvement before stopping (~800k steps)
+early_stop_min_delta: 0.01    # minimum relative improvement to reset patience
+early_stop_check_freq: 200    # episodes between plateau checks (~8k steps)
+early_stop_min_timesteps: 100000  # never stop before this many timesteps
+
+ppo:
+  learning_rate: 3.0e-4
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  total_timesteps: 1000000
+
+a2c:
+  learning_rate: 7.0e-4
+  n_steps: 5
+  gamma: 0.99
+  gae_lambda: 1.0
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  total_timesteps: 1000000
+
+dqn:
+  learning_rate: 1.0e-4
+  buffer_size: 100000
+  batch_size: 32
+  gamma: 0.99
+  target_update_interval: 500
+  exploration_fraction: 0.1
+  exploration_final_eps: 0.05
+  learning_starts: 1000
+  train_freq: 4
+  gradient_steps: 1
+  total_timesteps: 1000000
