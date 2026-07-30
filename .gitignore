@@ -10,6 +10,7 @@ build/
 *.iml
 results/
 logs/
+*.log
 *.zip
 .DS_Store
 MiniCPBP/target/
